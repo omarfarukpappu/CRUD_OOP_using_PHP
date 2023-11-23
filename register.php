@@ -5,11 +5,10 @@ include_once 'Database.php';
 
 class register {
    public $DB;
-  //  public $DB_teacher;
+
 
     public function __construct() {
            $this->DB = new Database();
-          //  $this->DB_teacher = new Database();
     }
   
     public function addRegister($data,$file) {
