@@ -96,3 +96,28 @@ class Teacher extends register{
 
         
   }
+  class attendance extends register{
+    public function addAttendance($data){
+
+      $class =$data['class'];
+      $roll =$data['roll'];
+      $section =$data['section'];
+  
+      
+
+        $query ="INSERT INTO `attendance`(`class`, `roll`, `section`) 
+        VALUES('$class','$roll','$section')"; 
+        $result = $this->DB->insert($query);
+       
+  
+        }
+
+  }
+
+  
+
+
+
+
+        
+  
