@@ -1,8 +1,8 @@
 <?php
 include_once "register.php";
-$reg = new register();
+$reg = new Teacher();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$register = $reg->addRegister($_POST,$_FILES);
+$register = $reg->addTeacher($_POST,$_FILES);
 }
 
 ?>

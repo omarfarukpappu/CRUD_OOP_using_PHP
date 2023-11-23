@@ -65,7 +65,7 @@ class register {
 }
 class Teacher extends register{
       
-  public function addRegister($data,$file){
+  public function addTeacher($data,$file){
 
     $name =$data['name'];
     $email =$data['email'];
