@@ -19,7 +19,7 @@ class Database {
         }
 
     }
-
+// insert
    public function insert($query){
        $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
        if($result){
@@ -30,6 +30,16 @@ class Database {
        }
 
    }
+   public function select($query){
+    $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+    if(mysqli_num_rows($result)>0){
+     return $result;
+    }
+    else{
+     return false;
+    }
+
+}
 
     }
 

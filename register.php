@@ -59,7 +59,13 @@ class register {
 
       }
 
-}
+}public function allStudent(){
+  $query ="SELECT * FROM register ORDER BY id DESC";
+  $result =$this->DB->select($query);
+  return $result;
+
+
+  }
 
 }
 class Teacher extends register{
@@ -111,9 +117,12 @@ class Teacher extends register{
        
   
         }
+        
+
 
   }
-
+  
+?>
   
 
 
