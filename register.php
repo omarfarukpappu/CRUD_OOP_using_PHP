@@ -52,15 +52,15 @@ class register {
           return $message;
         }
 
-
-
-        
-
-
       }
 
-}public function allStudent(){
-  $query ="SELECT * FROM register ORDER BY id DESC";
+}
+
+
+
+
+public function allStudent(){
+  $query ="SELECT * FROM register ORDER BY id ASC";
   $result =$this->DB->select($query);
   return $result;
 
@@ -68,6 +68,10 @@ class register {
   }
 
 }
+
+
+
+
 class Teacher extends register{
       
   public function addTeacher($data,$file){
@@ -97,6 +101,14 @@ class Teacher extends register{
 
       }
 
+      public function allTeachers(){
+        $query ="SELECT * FROM teacher ORDER BY ID ASC";
+        $result =$this->DB->select($query);
+        return $result;
+      
+      
+        }
+
 
 
 
@@ -117,6 +129,13 @@ class Teacher extends register{
        
   
         }
+        public function allAttendents(){
+          $query ="SELECT * FROM attendance ORDER BY class ASC";
+          $result =$this->DB->select($query);
+          return $result;
+        
+        
+          }
         
 
 
