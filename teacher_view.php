@@ -60,13 +60,11 @@ $reg = new Teacher();
                     echo "<td> <a href='{$row['picture']}'onclick='window.open(this.href,'width=100px, height=100px')'>
                     <img src='{$row['picture']}' alt='' style='width: 70px; height: 70px;'></td>";
                   
-                    echo "<td>{$row['address']}</td>";
-                    echo "<td><a href='attendents.php?id={$row['ID']}' class='btn btn-sm btn-warning'>Edit</a>
-                    <a href='index.php?id={$row['ID']}' class='btn btn-sm btn-danger'>Delete</a></td>";
-                    // echo "<td><a href='delete.php?id={$row['id']}' class='edit-button'>Delete</a></td>";
-                    // echo "<td><a href='insert.php?id={$row['id']}' class='edit-button'>insert</a></td>";
+                echo "<td>{$row['address']}</td>";
+                echo "<td><a href='editTeacher.php?ID=<?=base64_encode{$row['ID']} ?>' class='btn btn-sm btn-warning'>Edit</a>
+                <a href='editTeacher.php?id=base64_encode{$row['ID']}' class='btn btn-sm btn-danger'>Delete</a></a></td>";
+
                     echo "</tr>";
-                    // $serial++;
 
                 }
              

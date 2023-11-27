@@ -79,7 +79,7 @@ class Teacher extends register{
     $name =$data['name'];
     $email =$data['email'];
     $class =$data['class'];
-    $roll =$data['subject'];
+    $subject =$data['subject'];
     $phone =$data['phone'];
     $address=$data['address'];
 
@@ -95,7 +95,7 @@ class Teacher extends register{
 
       move_uploaded_file($file_temp,$upload_image);
       $query ="INSERT INTO `teacher`(`name`, `email`, `class`, `subject`, `phone`, `picture`, `address`) 
-      VALUES('$name','$email','$class','$roll','$phone','$upload_image','$address')"; 
+      VALUES('$name','$email','$class','$subject','$phone','$upload_image','$address')"; 
       $result = $this->DB->insert($query);
      
 
@@ -108,6 +108,55 @@ class Teacher extends register{
       
       
         }
+
+      public function getTeacherByID($ID){
+        $query ="SELECT * FROM teacher where ID ='$ID'";
+        $result =$this->DB->select($query);
+        return $result;
+      }
+      public function UpdateTeacher($data,$file,$ID){
+        $name =$data['name'];
+        $email =$data['email'];
+        $class =$data['class'];
+        $subject =$data['Roll_number'];
+        $phone =$data['phone'];
+        $address=$data['address'];
+  
+        $permited =array('jpg','jpeg','png','gift');
+        $file_name =$file['image']['name'];
+        $file_size =$file['image']['size'];
+        $file_temp =$file['image']['tmp_name'];
+  
+        $div= explode('.',$file_name);
+        $file_ext=strtolower(end($div));
+        $unique_image =substr(md5(time()),0,10). '.'.$file_ext;
+        $upload_image ="upload/".$unique_image;
+        
+  
+        if($file_size>5000000){
+          $message ='File is too large (greater than 50MB).';
+          return $message;
+        }
+        else{
+          move_uploaded_file($file_temp,$upload_image);
+          $query ="UPDATE `teacher` SET name=$name, email=$email,class = $class,subject =$subject,phone=$phone,picture=$upload_image,address=$address WHERE ID='$ID'";
+          $result = $this->DB->update($query);
+         
+
+         
+          if($result){
+            $message ="Regestation successfull";
+            return $message;
+          }
+          else{
+            $message="Regestation Failed";
+            return $message;
+          }
+  
+        }
+
+
+      }
 
 
 

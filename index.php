@@ -1,9 +1,9 @@
-<?php
+<!-- <!-- <?php
 
 include_once "register.php";
 $reg = new register();
 
-?>
+?> -->
 
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $reg = new register();
             </tr>
          </thead>
          <tbody>
-            <?php
+            <!-- <?php
             $allData =$reg->allStudent();
             if ($allData) {
                 while ($row = mysqli_fetch_assoc($allData)){
@@ -68,10 +68,10 @@ $reg = new register();
             }
 
             
-            ?>
+            ?> -->
          </tbody>
       </table>
 
 
 </body>
-</html>
+</html> -->

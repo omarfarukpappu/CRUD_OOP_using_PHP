@@ -1,8 +1,14 @@
 <?php
 include_once "register.php";
 $reg = new Teacher();
+if (isset($_GET['ID'])) {
+    $ID=base64_decode($_GET['ID']);
+    
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$register = $reg->addTeacher($_POST,$_FILES);
+$register = $reg->UpdateTeacher($_POST,$_FILES,$ID);
 }
 
 ?>
@@ -23,33 +29,50 @@ $register = $reg->addTeacher($_POST,$_FILES);
 <body>
 
 <div class="form-container">
+
 <div class="col-md-6">
             <a href="teacher_view.php" class="btn btn-success float-right">View Teacher info</a>
         </div>
-    <h2>Teacher information Data</h2>
-        <form action="" method="post" enctype="multipart/form-data">
-        <label for="name">Name:</label> 
-        <input type="text" name="name" value="" required>
+    <h2>Update Teacher information</h2>
+    <?php 
+        $gettech =$reg->getTeacherByID($ID);
+        if ($gettech) {
+            while ($row= mysqli_fetch_assoc($gettech)) {
+             ?>
+         <form action="" method="post" enctype="multipart/form-data">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" value="<?php echo $row['name']; ?>" required>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" value="" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" value="<?php echo $row['email']; ?>" required>
 
-        <label for="Class">Class:</label>
-        <input type="Class" name="class" required>
+                    <label for="Class">Class:</label>
+                    <input type="text" name="class" value="<?php echo $row['class']; ?>" required>
 
-        <label for="subject">Department:</label>
-        <input type="text" name="subject" required>
+                    <label for="subject">Department:</label>
+                    <input type="text" name="subject" value="<?php echo $row['subject']; ?>" required>
 
-        <label for="phone">Phone:</label>
-        <input type="number" name="phone" value="" required>
+                    <label for="phone">Phone:</label>
+                    <input type="number" name="phone" value="<?php echo $row['phone']; ?>" required>
 
-        <label for="uploaded_pic">Picture:</label>
-        <input type="file" name="picture" accept="image/jpg, image/jpeg, image/png" required>
+                    <label for="uploaded_pic">Picture:</label>
+                    <input type="file" name="picture" accept="image/jpg, image/jpeg, image/png" required>
 
-        <label for="text_area">Address:</label>
-        <textarea name="address" required></textarea>
-        <input type="submit" value="Insert">
-    </form>
+                    <label for="text_area">Address:</label>
+                    <textarea name="address" required><?php echo $row['address']; ?></textarea>
+                    <input type="submit" value="Update">
+                </form>
+
+
+                <?php
+                
+               
+            }
+        }
+
+
+            ?>
+       
 </div>
 
 </body>

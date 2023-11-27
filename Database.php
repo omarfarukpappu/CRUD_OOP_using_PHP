@@ -41,6 +41,17 @@ class Database {
 
 }
 
+
+public function update($query){
+    $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+    if($result){
+     return $result;
+    }
+    else{
+     return false;
+    }
+
+}
     }
 
 ?>
