@@ -42,6 +42,7 @@ $reg = new register();
                <th>Phone</th>
                <th>Picture</th>
                <th>Address</th>
+               <th>Action</th>
             </tr>
          </thead>
          <tbody>
@@ -60,11 +61,11 @@ $reg = new register();
                     <img src='{$row['picture']}' alt='' style='width: 70px; height: 70px;'></td>";
                   
                     echo "<td>{$row['address']}</td>";
-                    // echo "<td><a href='edit_user.php?id={$row['id']}' class='edit-button'>Update</a></td>";
-                    // echo "<td><a href='delete.php?id={$row['id']}' class='edit-button'>Delete</a></td>";
-                    // echo "<td><a href='insert.php?id={$row['id']}' class='edit-button'>insert</a></td>";
+
+                  
+                    echo "<td><a href='editTeacher.php?ID=<?=base64_encode{$row['ID']} ?>' class='btn btn-sm btn-warning'>Edit</a>
+                    <a href='editTeacher.php?id=base64_encode{$row['ID']}' class='btn btn-sm btn-danger'>Delete</a></a></td>";
                     echo "</tr>";
-                    // $serial++;
 
                 }
              

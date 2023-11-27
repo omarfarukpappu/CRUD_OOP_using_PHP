@@ -25,7 +25,7 @@ $register = $reg->addRegister($_POST,$_FILES);
 
 <div class="form-container">
 <div class="col-md-6">
-            <a href="Student_view.php" class="btn btn-success float-right">Add Teacher Data</a>
+            <a href="Student_view.php" class="btn btn-success float-right">View Student Data</a>
         </div> 
     <h2>Student information Data</h2>
         <form action="" method="post" enctype="multipart/form-data">
