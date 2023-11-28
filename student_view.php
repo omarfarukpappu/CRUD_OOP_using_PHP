@@ -63,8 +63,8 @@ $reg = new register();
                     echo "<td>{$row['address']}</td>";
 
                   
-                    echo "<td><a href='editTeacher.php?ID=<?=base64_encode{$row['ID']} ?>' class='btn btn-sm btn-warning'>Edit</a>
-                    <a href='editTeacher.php?id=base64_encode{$row['ID']}' class='btn btn-sm btn-danger'>Delete</a></a></td>";
+                    echo "<td><a href='editStudent.php?ID=".base64_encode($row['ID'])."' class='btn btn-sm btn-warning'>Edit</a>
+                    <a href='DeleteStudent.php?ID=".base64_encode($row['ID'])."' class='btn btn-sm btn-danger'>Delete</a></a></td>";
                     echo "</tr>";
 
                 }

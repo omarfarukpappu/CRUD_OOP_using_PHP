@@ -19,8 +19,9 @@ class Database {
         }
 
     }
-// insert
-   public function insert($query){
+
+       // insert Teacher 
+       public function insert($query){
        $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
        if($result){
         return $result;
@@ -30,20 +31,23 @@ class Database {
        }
 
    }
-   public function select($query){
-    $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
-    if(mysqli_num_rows($result)>0){
-     return $result;
-    }
-    else{
-     return false;
-    }
+
+
+      //Display teacher
+       public function select($query){
+       $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+       if(mysqli_num_rows($result)>0){
+       return $result;
+       }
+       else{
+       return false;
+       }
 
 }
 
-
-public function update($query){
-    $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+    // update teacher
+    public function update($query){
+    $result = mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
     if($result){
      return $result;
     }
@@ -51,7 +55,33 @@ public function update($query){
      return false;
     }
 
-}
+    }
+
+
+    // Delete teacher
+    public function delete($query){
+    $result = mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+    if($result){
+     return $result;
+    }
+    else{
+     return false;
+    }
+
+    }
+        // update teacher
+        public function updateS($query){
+            $result = mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+            if($result){
+             return $result;
+            }
+            else{
+             return false;
+            }
+        
+            }
+        
+
     }
 
 ?>

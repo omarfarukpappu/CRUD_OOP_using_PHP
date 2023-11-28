@@ -1,6 +1,6 @@
 <?php
 include_once "register.php";
-$reg = new Teacher();
+$reg = new register();
 
 if (isset($_GET['ID'])) {
     $ID=base64_decode($_GET['ID']);
@@ -8,7 +8,7 @@ if (isset($_GET['ID'])) {
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$register = $reg->UpdateTeacher($_POST,$_FILES,$ID);
+$register = $reg->UpdateStudent($_POST,$_FILES,$ID);
 }
 
 ?>
@@ -31,13 +31,13 @@ $register = $reg->UpdateTeacher($_POST,$_FILES,$ID);
 <div class="form-container">
 
 <div class="col-md-6">
-            <a href="teacher_view.php" class="btn btn-success float-right">View Teacher info</a>
+            <a href="student_view.php" class="btn btn-success float-right">View Student info</a>
         </div>
-    <h2>Update Teacher information</h2>
+    <h2>Update Student information</h2>
     <?php 
-        $gettech =$reg->getTeacherByID($ID);
-        if ($gettech) {
-            while ($row= mysqli_fetch_assoc($gettech)) {
+        $getstudent =$reg-> getStudentByID($ID);
+        if ($getstudent) {
+            while ($row= mysqli_fetch_assoc($getstudent)) {
              ?>
          <form action="" method="post" enctype="multipart/form-data">
                     <label for="name">Name:</label>
@@ -50,7 +50,7 @@ $register = $reg->UpdateTeacher($_POST,$_FILES,$ID);
                     <input type="text" name="class" value="<?php echo $row['class']; ?>" required>
 
                     <label for="subject">Department:</label>
-                    <input type="text" name="subject" value="<?php echo $row['subject']; ?>" required>
+                    <input type="text" name="roll" value="<?php echo $row['roll']; ?>" required>
 
                     <label for="phone">Phone:</label>
                     <input type="number" name="phone" value="<?php echo $row['phone']; ?>" required>
