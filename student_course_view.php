@@ -1,8 +1,8 @@
 <?php
 
-// include_once "attendents.php";
+// include_once "courses.php";
 include_once "register.php";
-$reg = new attendance();
+$reg = new student_courses();
 
 ?>
 
@@ -26,7 +26,7 @@ $reg = new attendance();
             <h3>All Data</h3>
         </div>
         <div class="col-md-6">
-            <a href="attendents.php" class="btn btn-info float-right">Add Attendance</a>
+            <a href="student_course.php" class="btn btn-info float-right">Add  student courses</a>
         </div>
 
     </div>
@@ -37,26 +37,24 @@ $reg = new attendance();
 </td>
          <thead>
             <tr>
-               <th>Class</th>
-               <th>Roll</th> 
-               <th>Section</th>
+               <th>Student ID</th>
+               <th>Course ID</th> 
+             
             </tr>
          </thead>
          <tbody>
             <?php
-            $allAttend=$reg->allAttendents();
-            if ($allAttend) {
-                while ($row = mysqli_fetch_assoc($allAttend)){
+            $allCours=$reg->allS_courses();
+            if ( $allCours) {
+                while ($row = mysqli_fetch_assoc($allCours)){
                     echo "<tr>";
-                    echo "<td>{$row['class']}</td>";
-                    echo "<td>{$row['roll']}</td>";
-                    echo "<td>{$row['section']}</td>";
+                    echo "<td>{$row['ID']}</td>";
+                    echo "<td>{$row['course_id']}</td>";
+                  
 
-                    // echo "<td><a href='edit_user.php?id={$row['id']}' class='edit-button'>Update</a></td>";
-                    // echo "<td><a href='delete.php?id={$row['id']}' class='edit-button'>Delete</a></td>";
-                    // echo "<td><a href='insert.php?id={$row['id']}' class='edit-button'>insert</a></td>";
+                 
                     echo "</tr>";
-                    // $serial++;
+
 
                 }
              

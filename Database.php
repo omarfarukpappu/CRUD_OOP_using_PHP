@@ -45,6 +45,17 @@ class Database {
 
 }
 
+public function selectSView($query){
+    $result =mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
+    if($result){
+    return $result;
+    }
+    else{
+    return false;
+    }
+
+}
+
     // update teacher
     public function update($query){
     $result = mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
@@ -69,7 +80,7 @@ class Database {
     }
 
     }
-        // update teacher
+        // update student
         public function updateS($query){
             $result = mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);
             if($result){

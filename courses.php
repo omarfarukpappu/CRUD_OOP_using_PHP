@@ -1,8 +1,8 @@
 <?php
 include_once "register.php";
-$reg = new attendance();
+$reg = new courses();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$register = $reg->addAttendance($_POST,$_FILES);
+$register = $reg->addCourse($_POST,$_FILES);
 }
 
 ?>
@@ -23,20 +23,19 @@ $register = $reg->addAttendance($_POST,$_FILES);
 
 <div class="form-container">
 <div class="col-md-6">
-            <a href="attendents_view.php" class="btn btn-success float-right">View Attendance</a>
+            <a href="courses_view.php" class="btn btn-success float-right">View Courses</a>
         </div>
 
-    <h2>Student Attendance:</h2>
+    <h2>Student Courses:</h2>
 
         <form action="" method="post">
-        <label for="class">Class:</label> 
-        <input type="number" name="class" value="" required>
+        <label for="course_id">Course :</label> 
+        <input type="number" name="course_id" value="" required>
 
-        <label for="roll">Roll Number:</label>
-        <input type="number" name="roll" value="" required>
+        <label for="course_name">Courses Name:</label>
+        <input type="text" name="course_name" value="" required>
+        
 
-        <label for="section">Section:</label>
-        <input type="section" name="section" required>
         <input type="submit" value="Insert">
         
     </form>

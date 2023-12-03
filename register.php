@@ -10,7 +10,8 @@ class register {
     public function __construct() {
            $this->DB = new Database();
     }
-  
+  // add student data
+
     public function addRegister($data,$file) {
       $name =$data['name'];
       $email =$data['email'];
@@ -36,7 +37,7 @@ class register {
       }
       else{
         move_uploaded_file($file_temp,$upload_image);
-        $query ="INSERT INTO `register`(`name`, `email`, `class`, `roll`, `phone`, `picture`, `address`) 
+        $query ="INSERT INTO `students`(`name`, `email`, `class`, `roll`, `phone`, `picture`, `address`) 
         VALUES('$name','$email','$class','$roll','$phone','$upload_image','$address')"; 
         $result = $this->DB->insert($query);
        
@@ -60,7 +61,7 @@ class register {
 
 // display student
 public function allStudent(){
-  $query ="SELECT * FROM register ORDER BY id ASC";
+  $query ="SELECT * FROM students ORDER BY id ASC";
   $result =$this->DB->select($query);
   return $result;
 
@@ -71,7 +72,7 @@ public function allStudent(){
 // get data in database
 
   public function getStudentByID($ID){
-    $query ="SELECT * FROM register where ID ='$ID'";
+    $query ="SELECT * FROM students where ID ='$ID'";
     $result =$this->DB->select($query);
     return $result;
    }
@@ -101,11 +102,11 @@ public function allStudent(){
           }
           else{
             move_uploaded_file($file_temp,$upload_image);
-            $query ="UPDATE `register` SET  name='$name', email='$email',class = '$class',roll = '$roll', phone='$phone',picture='$upload_image',address='$address' WHERE ID='$ID'";
+            $query ="UPDATE `students` SET  name='$name', email='$email',class = '$class',roll = '$roll', phone='$phone',picture='$upload_image',address='$address' WHERE ID='$ID'";
             $result = $this->DB->updateS($query);
            
   
-           
+             
             if($result){
               $message ="Regestation successfull";
               return $message;
@@ -125,7 +126,7 @@ public function allStudent(){
      // delete student information
      public function DeleteStudent($ID){
 
-      $img_query ="SELECT * FROM register WHERE ID = '$ID'";
+      $img_query ="SELECT * FROM students WHERE ID = '$ID'";
       $img_res = $this->DB->select($img_query);
       if ($img_res) {
        while($row = mysqli_fetch_assoc($img_res)){
@@ -133,7 +134,7 @@ public function allStudent(){
        } unlink($picture);
      
       }
-      $delete_query = "DELETE FROM `register` WHERE ID = '$ID'";
+      $delete_query = "DELETE FROM `students` WHERE ID = '$ID'";
       $del=$this->DB->delete($delete_query);
       if ($del) {
        $message ="Regestation successfull";
@@ -187,7 +188,7 @@ class Teacher extends register{
       
       
         }
-// get teacher data
+      // get teacher data
       public function getTeacherByID($ID){
         $query ="SELECT * FROM teacher where ID ='$ID'";
         $result =$this->DB->select($query);
@@ -268,23 +269,23 @@ class Teacher extends register{
 
         
   
-  class attendance extends register{
-    public function addAttendance($data){
+  class courses extends register{
+    public function addCourse($data){
 
-      $class =$data['class'];
-      $roll =$data['roll'];
-      $section =$data['section'];
+      $c_id =$data['course_id'];
+      $c_name =$data['course_name'];
+     
   
       
 
-        $query ="INSERT INTO `attendance`(`class`, `roll`, `section`) 
-        VALUES('$class','$roll','$section')"; 
+        $query ="INSERT INTO `courses`(`course_id`, `course_name`) 
+        VALUES('$c_id','$c_name')"; 
         $result = $this->DB->insert($query);
        
   
         }
-        public function allAttendents(){
-          $query ="SELECT * FROM attendance ORDER BY class ASC";
+        public function allcourses(){
+          $query ="SELECT * FROM courses ORDER BY course_id ASC";
           $result =$this->DB->select($query);
           return $result;
         
@@ -295,7 +296,46 @@ class Teacher extends register{
 
   }
 
-  
+
+  class student_courses extends register{
+
+   public function addStudentCourse($data){
+
+      $S_id =$data['ID'];
+      $S_C_id =$data['course_id'];
+      $query ="INSERT INTO `student_course`(`ID`, `course_id`) 
+      VALUES('$S_id','$S_C_id')"; 
+      $result = $this->DB->insert($query);
+     
+
+      }
+      public function allS_courses(){
+        $query ="SELECT * FROM student_course ORDER BY ID ASC";
+        $result =$this->DB->select($query);
+        return $result;
+      
+      
+        }
+
+
+  }
+
+  class student_courses_Result extends register{
+
+
+       public function allS_and_courses(){
+         $query ="SELECT students.ID, students.name,courses.course_id,courses.course_name 
+         FROM students JOIN student_course ON students.ID=student_course.ID
+         JOIN courses ON student_course.course_id=courses.course_id;";
+         $result =$this->DB->selectSView($query);
+         return $result;
+       
+       
+         }
+
+   }
+
+
 ?>
 
 
