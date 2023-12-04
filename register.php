@@ -295,7 +295,7 @@ class Teacher extends register{
 
 
   }
-
+// student course
 
   class student_courses extends register{
 
@@ -319,6 +319,7 @@ class Teacher extends register{
 
 
   }
+  // student course table
 
   class student_courses_Result extends register{
 
@@ -332,6 +333,18 @@ class Teacher extends register{
        
        
          }
+
+
+
+
+         // get teacher data
+         public function getSDataByID($ID){
+          $query ="SELECT students.ID, students.name,courses.course_id,courses.course_name 
+          FROM students JOIN student_course ON students.ID=student_course.ID
+          JOIN courses ON student_course.course_id=courses.course_id where students.ID ='$ID'";
+          $result =$this->DB->select($query);
+          return $result;
+        }
 
    }
 

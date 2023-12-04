@@ -65,7 +65,7 @@ $reg = new register();
                   
                     echo "<td><a href='editStudent.php?ID=".base64_encode($row['ID'])."' class='btn btn-sm btn-warning'>Edit</a>
                     <a href='DeleteStudent.php?ID=".base64_encode($row['ID'])."' class='btn btn-sm btn-danger'>Delete</a>
-                    <a href='editStudent.php?ID=".base64_encode($row['ID'])."' class='btn btn-sm btn-warning'>View</a></a></td>";
+                    <a href='inperson_course_view.php?ID=".base64_encode($row['ID'])."' class='btn btn-sm btn-warning'>View</a></a></td>";
                     echo "</tr>";
 
                 }

@@ -56,6 +56,8 @@ public function selectSView($query){
 
 }
 
+
+
     // update teacher
     public function update($query){
     $result = mysqli_query($this->conn,$query)or die($this->conn->error.__LINE__);

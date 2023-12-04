@@ -1,9 +1,20 @@
 <?php
-
 include_once "register.php";
-$reg = new student_courses_Result();
+$reg = new  student_courses_Result();
+// include_once "s_view.php";
+
+if (isset($_GET['ID'])) {
+    $ID=base64_decode($_GET['ID']);
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$register = $reg->getSDataByID($ID);
+}
 
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -43,9 +54,9 @@ $reg = new student_courses_Result();
          </thead>
          <tbody>
             <?php
-            $allData =$reg->allS_and_courses();
-            if ($allData) {
-                while ($row = mysqli_fetch_assoc($allData)){
+            $allDataS =$reg->getSDataByID($ID);
+            if ($allDataS) {
+                while ($row = mysqli_fetch_assoc($allDataS)){
                     echo "<tr>";
                     echo "<td>{$row['ID']}</td>";
                     echo "<td>{$row['name']}</td>";
