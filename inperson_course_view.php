@@ -35,10 +35,16 @@ $register = $reg->getSDataByID($ID);
 <body>
 
    <div class="table-container">
-   <div class="col-md-6">
-            <a href="student.php" class="btn btn-info float-right">Add Student</a>
+    <div class ="row" >
+    <div class="col-12 d-flex justify-content-between">
+            <a href="student_course.php" class="btn btn-info float-right">Add Course</a>
+            <a href="student_view.php" class="btn btn-info float-right">View Student Information</a>
         </div>
+        
       <h3>Student Course Information</h3>
+
+    </div>
+   
       <table>
       <td>
   </a>
@@ -47,8 +53,8 @@ $register = $reg->getSDataByID($ID);
             <tr>
                <th>ID</th>
                <th>Name</th>
-               <th>Email</th>
-               <th>Class</th>
+               <th>Course ID</th>
+               <th>Course Name</th>
 
             </tr>
          </thead>
